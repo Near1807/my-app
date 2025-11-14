@@ -7,7 +7,7 @@ type NavLinkProps = {
 
 function NavLink(props:NavLinkProps){
     return(
-        <li className="bg-slate-950 text-blue-50" >
+        <li className="bg-black text-blue-50" >
             <a href={props.href}>{props.children}</a>
         </li>
     )
@@ -21,7 +21,7 @@ export function DarkButton(props: {className?: string;}){
     };
     return(
         <>
-        <button className={`bg-white ${props.className}`} onClick={toggleDark}>{isDark ? "dark":"light"}</button>
+        <button className={`rounded-2xl px-6 dark:bg-[url('/images/night.jpg')] dark:bg-[length:100px_25px] bg-[url('/images/day.jpg')] bg-[length:100px_25px] transition-colors duration-200 ${props.className}`} onClick={toggleDark}>{isDark ? "":""}</button>
         </>
     )  
 }
@@ -32,7 +32,7 @@ export default function NavBar(){
         setDark(!isDark);
     }
     return(
-        <nav className="bg-slate-950">
+        <nav className="bg-black">
             <div className=" flex flex-row p-4 justify-between px-10">
                 <ul className="flex flex-row space-x-10 grid-cols-1">
                     <NavLink href="/">home</NavLink>

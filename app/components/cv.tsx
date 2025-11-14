@@ -1,6 +1,6 @@
 export function Card(props: {className?: string; children:React.ReactNode}) {
     return(
-        <div className={`bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-black p-4 ${props.className}`}>
+        <div className={`transition-colors duration-200 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-black p-4 ${props.className}`}>
             {props.children}
         </div>)
 }

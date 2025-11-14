@@ -2,7 +2,7 @@ import { Card, Divider, Subtext, Subtitle, Title, Text, PersonalImage} from "../
 
 export default function CV() {
  return (
-    <div className="grid lg:grid-cols-4 gap-4 p-4 bg-white min-h-screen dark:bg-black">
+    <div className="transition-colors duration-200 grid lg:grid-cols-4 gap-4 p-4 bg-white min-h-screen dark:bg-black">
         <Card className="lg:col-span-1 col-span-4">
             <PersonalImage/>
             <Title className="text-center"> Thomas Leman </Title>
