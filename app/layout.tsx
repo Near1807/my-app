@@ -3,12 +3,13 @@ import NavBar from './components/navbar'
 import './globals.css'
 
 
-export default function RootLayout(props) {
+export default function RootLayout(props: {className?: string; children:React.ReactNode}) {
   return (
     <html>
       <body>
           <NavBar/>
           {props.children}
+
       </body>
     </html>
   )

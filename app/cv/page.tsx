@@ -2,13 +2,13 @@ import { Card, Divider, Subtext, Subtitle, Title, Text, PersonalImage} from "../
 
 export default function CV() {
  return (
-    <div className="grid lg:grid-cols-4 gap-4 p-4">
+    <div className="grid lg:grid-cols-4 gap-4 p-4 bg-white min-h-screen dark:bg-black">
         <Card className="lg:col-span-1 col-span-4">
             <PersonalImage/>
             <Title className="text-center"> Thomas Leman </Title>
             <Subtext className="text-center">Software Devlopper</Subtext>
             <Divider/>
-            <Subtitle className="text-gray-500">Skills</Subtitle>
+            <Subtitle className="">Skills</Subtitle>
             <Text>JavaScript / TypeScript</Text>
             <Text>React / Next.js</Text>
             <Text>HTML / CSS / TailwindCSS</Text>
@@ -57,5 +57,6 @@ export default function CV() {
         <Card className="col-span-4">
             <Title>Contact</Title>
         </Card>
-    </div>)
+    </div>
+    )
 }
