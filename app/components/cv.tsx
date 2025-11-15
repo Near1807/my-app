@@ -1,6 +1,6 @@
 export function Card(props: {className?: string; children:React.ReactNode}) {
     return(
-        <div className={`transition-colors duration-200 bg-white dark:bg-gray-900 rounded-xl border border-gray-300 dark:border-black p-4 ${props.className}`}>
+        <div className={`transition-colors duration-200 bg-white dark:bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl border border-gray-300 dark:border-black p-4 ${props.className}`}>
             {props.children}
         </div>)
 }
@@ -46,11 +46,11 @@ export function Divider(){
     )
 }
 
-export function Contact(){
-    return(
-        <div>
-            <img src="" alt="" />
-        </div>
-    )
+export function Contact(props: {className:string; children?: React.ReactNode }) {
+  return (
+    <div className="flex  flex-row gap-2">
+      <div className={`${props.className}`}/>
+      <Text>{props.children}</Text>
+    </div>
+  )
 }
-

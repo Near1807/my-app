@@ -3,12 +3,13 @@ import React, { useState } from "react";
 type NavLinkProps = {
     href: string;
     children: React.ReactNode;
+    className?: string;
 }
 
-function NavLink(props:NavLinkProps){
+export function NavLink(props:NavLinkProps){
     return(
         <li className="bg-black text-blue-50" >
-            <a href={props.href}>{props.children}</a>
+            <a className={`${props.className}`} href={props.href}>{props.children}</a>
         </li>
     )
 }
@@ -33,10 +34,11 @@ export default function NavBar(){
     }
     return(
         <nav className="bg-black">
-            <div className=" flex flex-row p-4 justify-between px-10">
+            <div className="flex flex-row p-4 justify-between px-10">
                 <ul className="flex flex-row space-x-10 grid-cols-1">
-                    <NavLink href="/">home</NavLink>
+                    <NavLink href="/">Home</NavLink>
                     <NavLink href="/cv">CV</NavLink>
+                    <NavLink href="/Quizes">Quizes</NavLink>
                 </ul>
                 <DarkButton className=""></DarkButton>
             </div>
