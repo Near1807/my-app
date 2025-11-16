@@ -28,13 +28,14 @@ export function QuizLink(props: { href: string; children: React.ReactNode }) {
 }
 
 export function Question(props: {
+  activeQuestion: number;
   children: number;
   onAnswer: (value: number) => void;
   score?: number;
   quiz: number;
 }) {
   const activeQuestion = props.children;
-  const question = GetQuestions(props.quiz, activeQuestion);
+  const question = GetQuestions(props.quiz)[activeQuestion];
 
   function handleAnswer(index: number) {
     const value = question.values[index];
@@ -61,19 +62,20 @@ export function Question(props: {
 export function Result(props: { score: number; quiz: number }) {
   const answers = GetAnswers(props.quiz) as Record<number, string>;
   const keys = Object.keys(answers).map((k) => parseInt(k, 10));
-  let PreviousKey = 0;
+  let Key = 0;
 
   for (let i = 0; i < keys.length; i++) {
     if (props.score > keys[i]) {
-      PreviousKey = keys[i];
+      Key = keys[i];
     } else {
+      Key = keys[i];
       break;
     }
   }
   return (
     <div className="flex flex-col">
       <Title>Congrats !</Title>
-      <Text className="mb-4">{answers[PreviousKey]}</Text>
+      <Text className="mb-4">{answers[Key]}</Text>
       <a
         className="p-2 rounded-xl bg-sky-100 hover:bg-sky-200 text-center"
         href="/Quizes"

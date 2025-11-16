@@ -13,11 +13,14 @@ export default function FlyQuizMainPage() {
     setPlaying(!playing);
   };
   const handleAnswer = (value: number) => {
-    setScore(score + value);
-    {
-      Current > GetQuestions.length - 1
-        ? setShowResult(true)
-        : setCurrent(Current + 1);
+    setScore((prevScore) => prevScore + value);
+
+    const questions = GetQuestions(0);
+
+    if (Current >= questions.length - 1) {
+      setShowResult(true);
+    } else {
+      setCurrent((prev) => prev + 1);
     }
   };
 
@@ -36,16 +39,21 @@ export default function FlyQuizMainPage() {
             </button>
           </div>
         )}
-        {playing && !showResult ? (
-          <div>
-            <Question quiz={0} score={score} onAnswer={handleAnswer}>
-              {Current}
-            </Question>
-          </div>
-        ) : null}
         {playing && showResult ? (
           <div>
             <Result quiz={0} score={score}></Result>
+          </div>
+        ) : null}
+        {playing && !showResult ? (
+          <div>
+            <Question
+              quiz={0}
+              score={score}
+              onAnswer={handleAnswer}
+              activeQuestion={Current}
+            >
+              {Current}
+            </Question>
           </div>
         ) : null}
       </QuizCard>
