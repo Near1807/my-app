@@ -2,7 +2,7 @@
 import { use, useState } from "react";
 import { QuizCard, QuizLink, Question, Result } from "../components/quiz";
 import { Title } from "../components/cv";
-import { GetQuestions } from "./questions";
+import { GetQuestions_Type } from "./questions";
 
 export default function FlyQuizMainPage() {
   const [quiz, setQuiz] = useState(0);
@@ -16,7 +16,7 @@ export default function FlyQuizMainPage() {
   const handleAnswer = (value: number) => {
     setScore((prevScore) => prevScore + value);
 
-    const questions = GetQuestions(quiz);
+    const questions = GetQuestions_Type(quiz);
 
     if (Current >= questions.length - 1) {
       setShowResult(true);
