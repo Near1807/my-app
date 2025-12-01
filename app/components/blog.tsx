@@ -1,22 +1,25 @@
 "use server";
-
+import { db } from "@/db";
+import { tasksTable } from "@/db/schema";
+import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 let messages: { message: string }[] = [{ message: "test" }];
 
 export async function GetMessages() {
-  return messages;
+  return await db.select().from(tasksTable);
 }
 
 export async function SendMessage(form: FormData) {
-  messages.push({
-    message: String(form.get("message")),
+  await db.insert(tasksTable).values({
+    title: String(form.get("title")),
+    done: false,
   });
   redirect((await headers()).get("referer") ?? "/");
 }
 
 export async function RemoveElem(id: number) {
-  delete messages[id];
+  await db.delete(tasksTable).where(eq(tasksTable.id, id.toString()));
   redirect((await headers()).get("referer") ?? "/");
 }

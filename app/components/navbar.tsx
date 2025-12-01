@@ -45,7 +45,6 @@ export default function NavBar() {
         <ul className="flex flex-row space-x-10 grid-cols-1">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/cv">CV</NavLink>
-          <NavLink href="/Quizes">Quizes</NavLink>
           <NavLink href="/Blog">Blog</NavLink>
         </ul>
         <DarkButton className=""></DarkButton>
