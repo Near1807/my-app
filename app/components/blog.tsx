@@ -1,6 +1,7 @@
 "use server";
 import { db } from "@/db";
 import { tasksTable } from "@/db/schema";
+import { ALL } from "dns";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
@@ -13,13 +14,13 @@ export async function GetMessages() {
 
 export async function SendMessage(form: FormData) {
   await db.insert(tasksTable).values({
-    title: String(form.get("title")),
+    title: String(form.get("message")),
     done: false,
   });
   redirect((await headers()).get("referer") ?? "/");
 }
 
-export async function RemoveElem(id: number) {
-  await db.delete(tasksTable).where(eq(tasksTable.id, id.toString()));
+export async function RemoveElem(id: string) {
+  await db.delete(tasksTable).where(eq(tasksTable.id, id));
   redirect((await headers()).get("referer") ?? "/");
 }
